@@ -25,6 +25,11 @@ mongoose.connect(process.env.MONGO_URI)
 // Mount Auth Routes (Keep this one in its own file since it has login AND register)
 app.use('/api/auth', require('./routes/auth.routes'));
 
+// Root route for health check
+app.get('/', (req, res) => {
+    res.json({ message: 'ThumbGen Master API is running successfully!' });
+});
+
 // Mount API routes
 app.post('/api/generate', generateThumbnail);
 app.post('/api/vibe-matcher', analyzeVibe);
