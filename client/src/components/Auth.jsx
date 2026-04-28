@@ -43,7 +43,7 @@ const Auth = () => {
                     setIsLogin(true); // Switch to login view after successful registration
                 }
             } else {
-                alert(data.message || 'Something went wrong');
+                alert(`Error: ${data.message}${data.error ? ` - Details: ${data.error}` : ''}`);
             }
         } catch (err) {
             console.error(err);
