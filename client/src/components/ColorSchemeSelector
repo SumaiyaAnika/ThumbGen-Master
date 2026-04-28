@@ -1,0 +1,33 @@
+const ColorSchemeSelector = ({ selectedColor, setSelectedColor }) => {
+    const schemes = [
+        { id: 'neon', name: 'Cyber Neon', colors: ['#ff00ff', '#00ffff'] },
+        { id: 'dark', name: 'Dark Mode', colors: ['#1a1a1a', '#4a4a4a'] },
+        { id: 'warm', name: 'Warm Sunset', colors: ['#ff7e5f', '#feb47b'] },
+        { id: 'minimal', name: 'Clean Minimal', colors: ['#ffffff', '#e2e2e2'] }
+    ];
+
+    return (
+        <div className="space-y-2 mt-4">
+            <label className="text-sm font-semibold text-gray-300">Color Scheme</label>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {schemes.map((scheme) => (
+                    <button
+                        key={scheme.id}
+                        type="button"
+                        onClick={() => setSelectedColor(scheme.id)}
+                        className={`p-2 rounded-lg border transition flex flex-col items-center ${selectedColor === scheme.id ? 'border-pink-500 bg-gray-800' : 'border-gray-700 bg-gray-900 hover:border-gray-500'
+                            }`}
+                    >
+                        <div className="flex w-full h-8 rounded mb-2 overflow-hidden">
+                            <div className="w-1/2 h-full" style={{ backgroundColor: scheme.colors[0] }}></div>
+                            <div className="w-1/2 h-full" style={{ backgroundColor: scheme.colors[1] }}></div>
+                        </div>
+                        <span className="text-xs text-gray-300">{scheme.name}</span>
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default ColorSchemeSelector;

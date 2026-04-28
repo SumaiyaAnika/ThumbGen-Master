@@ -1,0 +1,31 @@
+const AspectRatioSelector = ({ selectedRatio, setSelectedRatio }) => {
+    const ratios = [
+        { label: '16:9', value: '16:9', desc: 'YouTube Standard' },
+        { label: '1:1', value: '1:1', desc: 'Instagram Square' },
+        { label: '9:16', value: '9:16', desc: 'Shorts / Reels' }
+    ];
+
+    return (
+        <div className="space-y-2">
+            <label className="text-sm font-semibold text-gray-300">Aspect Ratio</label>
+            <div className="flex gap-3">
+                {ratios.map((ratio) => (
+                    <button
+                        key={ratio.value}
+                        type="button"
+                        onClick={() => setSelectedRatio(ratio.value)}
+                        className={`flex-1 py-3 px-4 rounded-lg border transition ${selectedRatio === ratio.value
+                                ? 'bg-pink-600 border-pink-500 text-white'
+                                : 'bg-gray-800 border-gray-700 text-gray-400 hover:border-pink-500 hover:text-white'
+                            }`}
+                    >
+                        <div className="font-bold">{ratio.label}</div>
+                        <div className="text-xs opacity-70">{ratio.desc}</div>
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default AspectRatioSelector;
