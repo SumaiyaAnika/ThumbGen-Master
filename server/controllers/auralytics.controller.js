@@ -1,7 +1,7 @@
 const { GoogleGenAI } = require('@google/genai');
 
 // Using the same SDK structure you already use for generation
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }); 
 
 exports.fetchYoutubeData = async (req, res) => {
     try {
@@ -14,7 +14,7 @@ exports.fetchYoutubeData = async (req, res) => {
         if (!videoId) {
             const pathSegments = new URL(url).pathname.split('/');
             videoId = pathSegments[pathSegments.length - 1];
-
+            
             // Clean up query params if it's a shortlink (e.g. youtu.be/ID?si=...)
             videoId = videoId.split('?')[0];
         }
@@ -160,8 +160,8 @@ Output strictly as valid JSON matching this structure:
     } catch (error) {
         console.error('Error generating strategy:', error);
         // Do not block the UI. Return a dynamic fallback.
-        res.status(200).json({
-            success: true,
+        res.status(200).json({ 
+            success: true, 
             strategy: {
                 suggestions: [
                     "Use high contrast colors compared to the competitor.",

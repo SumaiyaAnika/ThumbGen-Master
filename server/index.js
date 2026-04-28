@@ -38,6 +38,12 @@ app.post('/api/creatorlens/reverse', require('./controllers/creatorlens.controll
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Only listen if not running in Vercel (where it acts as a serverless function)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
+
+// Export the app for Vercel
+module.exports = app;
