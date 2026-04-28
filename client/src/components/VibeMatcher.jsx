@@ -36,7 +36,7 @@ const VibeMatcher = () => {
         try {
             const token = localStorage.getItem('token');
             // Reaching out to the new vision-remix endpoint we created
-            const response = await fetch('http://localhost:5000/api/vibe-matcher', {
+            const response = await fetch('https://thumb-gen-master.vercel.app/api/vibe-matcher', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const VibeMatcher = () => {
         try {
             const token = localStorage.getItem('token');
             // Routing it to the original generator we already have running in the system
-            const response = await fetch('http://localhost:5000/api/generate', {
+            const response = await fetch('https://thumb-gen-master.vercel.app/api/generate', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',

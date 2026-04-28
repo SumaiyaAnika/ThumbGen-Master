@@ -51,7 +51,7 @@ const Home = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/generate', {
+            const response = await fetch('https://thumb-gen-master.vercel.app/api/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

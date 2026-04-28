@@ -19,7 +19,7 @@ const Auth = () => {
 
         try {
             // Send the request to your backend running on port 5000
-            const response = await fetch(`http://localhost:5000${endpoint}`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

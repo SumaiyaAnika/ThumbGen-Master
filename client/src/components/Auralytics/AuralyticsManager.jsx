@@ -43,7 +43,7 @@ const AuralyticsManager = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const ytResponse = await fetch('http://localhost:5000/api/auralytics/fetch-youtube', {
+            const ytResponse = await fetch('https://thumb-gen-master.vercel.app/api/auralytics/fetch-youtube', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const AuralyticsManager = () => {
             setStatus('strategizing');
             
             const token = localStorage.getItem('token');
-            const stratResponse = await fetch('http://localhost:5000/api/auralytics/generate-strategy', {
+            const stratResponse = await fetch('https://thumb-gen-master.vercel.app/api/auralytics/generate-strategy', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

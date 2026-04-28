@@ -36,7 +36,7 @@ const ZoneCheck = () => {
         setAiWarning('');
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/studio/zone-check/analyze', {
+            const res = await fetch('https://thumb-gen-master.vercel.app/api/studio/zone-check/analyze', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ const ZoneCheck = () => {
         setIsFixing(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/studio/zone-check/autofix', {
+            const res = await fetch('https://thumb-gen-master.vercel.app/api/studio/zone-check/autofix', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

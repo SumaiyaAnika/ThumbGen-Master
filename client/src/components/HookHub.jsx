@@ -34,7 +34,7 @@ const HookHub = () => {
 
     const fetchFeed = async (pageNumber) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/hub/feed?page=${pageNumber}&limit=12`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app/api/hub/feed?page=${pageNumber}&limit=12`, {
                 headers: { ...(token ? { 'Authorization': `Bearer ${token}` } : {}) }
             });
             const data = await response.json();
@@ -60,7 +60,7 @@ const HookHub = () => {
 
     const handleLike = async (postId) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/hub/like/${postId}`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app/api/hub/like/${postId}`, {
                 method: 'PUT',
                 headers: { ...(token ? { 'Authorization': `Bearer ${token}` } : {}) }
             });
@@ -75,7 +75,7 @@ const HookHub = () => {
 
     const handleComment = async (postId, text) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/hub/comment/${postId}`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app/api/hub/comment/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const HookHub = () => {
 
     const handleEdit = async (postId, originalTitle, geminiStrategy) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/hub/edit/${postId}`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app/api/hub/edit/${postId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const HookHub = () => {
     const handleDelete = async (postId) => {
         if (!window.confirm("Are you sure you want to delete this post forever?")) return;
         try {
-            const response = await fetch(`http://localhost:5000/api/hub/delete/${postId}`, {
+            const response = await fetch(`https://thumb-gen-master.vercel.app/api/hub/delete/${postId}`, {
                 method: 'DELETE',
                 headers: { ...(token ? { 'Authorization': `Bearer ${token}` } : {}) }
             });
@@ -157,7 +157,7 @@ const HookHub = () => {
         if (!publishBase64) return alert("Please select an image");
         setIsPublishing(true);
         try {
-            const response = await fetch('http://localhost:5000/api/hub/publish', {
+            const response = await fetch('https://thumb-gen-master.vercel.app/api/hub/publish', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

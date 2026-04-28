@@ -80,7 +80,7 @@ const OverlayEdit = () => {
         setLoadingEmojis(true);
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/studio/overlay-edit/suggest-emojis', {
+            const response = await fetch('https://thumb-gen-master.vercel.app/api/studio/overlay-edit/suggest-emojis', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
