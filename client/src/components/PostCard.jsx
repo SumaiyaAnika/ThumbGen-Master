@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, MessageSquare, Play, MoreVertical, Edit2, Trash2, Send, X } from 'lucide-react';
 
-const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, onRemix }) => {
+const PostCard = ({ post, index = 0, currentUserId, onLike, onComment, onEdit, onDelete, onRemix }) => {
     const [showComments, setShowComments] = useState(false);
     const [commentText, setCommentText] = useState('');
     const [showMenu, setShowMenu] = useState(false);
@@ -91,7 +91,8 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                     <img 
                         src={post.imageUrl} 
                         alt={post.originalTitle || "Thumbnail"} 
-                        loading="lazy"
+                        loading={index < 4 ? "eager" : "lazy"}
+                        fetchpriority={index < 2 ? "high" : "auto"}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-80 pointer-events-none"></div>

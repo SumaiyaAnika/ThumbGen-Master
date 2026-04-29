@@ -238,10 +238,11 @@ const HookHub = () => {
                         <div 
                             style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', alignItems: 'start' }}
                         >
-                            {posts.map(post => (
+                            {posts.map((post, index) => (
                                 <PostCard 
                                     key={post._id} 
                                     post={post}
+                                    index={index}
                                     currentUserId={userId}
                                     onLike={handleLike}
                                     onComment={handleComment}
