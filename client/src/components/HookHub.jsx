@@ -198,7 +198,7 @@ const HookHub = () => {
             
             <nav className="flex justify-between items-center mb-8 relative z-10 border-b border-gray-800 pb-4 max-w-7xl mx-auto w-full">
                 <div className="flex items-center gap-4">
-                    <Link to="/dashboard" className="p-2 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-white transition-colors border border-transparent hover:border-gray-700">
+                    <Link to="/dashboard" aria-label="Back to dashboard" className="p-2 hover:bg-gray-800 rounded-lg text-gray-400 hover:text-white transition-colors border border-transparent hover:border-gray-700">
                         <ChevronLeft size={20} />
                     </Link>
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-orange-500 bg-clip-text text-transparent flex items-center gap-2">
@@ -279,7 +279,7 @@ const HookHub = () => {
                     <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col">
                         <div className="px-6 py-4 border-b border-gray-800 flex justify-between items-center bg-gray-800/30">
                             <h2 className="text-lg font-bold">Publish to Hook Hub</h2>
-                            <button onClick={() => setShowPublishModal(false)} className="text-gray-400 hover:text-white p-1">
+                            <button aria-label="Close publish modal" onClick={() => setShowPublishModal(false)} className="text-gray-400 hover:text-white p-1">
                                 <X size={20} />
                             </button>
                         </div>
@@ -303,8 +303,9 @@ const HookHub = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-1">Original Title</label>
+                                    <label htmlFor="publish-title" className="block text-sm font-medium text-gray-400 mb-1">Original Title</label>
                                     <input 
+                                        id="publish-title"
                                         type="text" 
                                         value={publishTitle} onChange={e => setPublishTitle(e.target.value)} 
                                         placeholder="Epic Neon Cityscape"
@@ -314,8 +315,9 @@ const HookHub = () => {
                                 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-1">Style Strategy</label>
+                                        <label htmlFor="publish-strategy" className="block text-sm font-medium text-gray-400 mb-1">Style Strategy</label>
                                         <input 
+                                            id="publish-strategy"
                                             type="text" 
                                             value={publishStrategy} onChange={e => setPublishStrategy(e.target.value)} 
                                             placeholder="Cyberpunk"
@@ -325,8 +327,9 @@ const HookHub = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-400 mb-1">Underlying AI Prompt</label>
+                                    <label htmlFor="publish-prompt" className="block text-sm font-medium text-gray-400 mb-1">Underlying AI Prompt</label>
                                     <textarea 
+                                        id="publish-prompt"
                                         value={publishPrompt} onChange={e => setPublishPrompt(e.target.value)} 
                                         placeholder="Hyper realistic 8k neon street..."
                                         rows="3"

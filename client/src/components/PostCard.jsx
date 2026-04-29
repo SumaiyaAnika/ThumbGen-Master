@@ -46,7 +46,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                 
                 {isCreator && (
                     <div className="relative">
-                        <button onClick={() => setShowMenu(!showMenu)} className="p-1 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white">
+                        <button aria-label="Post options" onClick={() => setShowMenu(!showMenu)} className="p-1 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white">
                             <MoreVertical size={18} />
                         </button>
                         {showMenu && (
@@ -91,6 +91,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                     <img 
                         src={post.imageUrl} 
                         alt={post.originalTitle || "Thumbnail"} 
+                        loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-80 pointer-events-none"></div>
@@ -105,6 +106,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
             <div className="px-4 flex items-center justify-between py-3 border-t border-gray-700/50 bg-gray-800 flex-none">
                 <div className="flex items-center gap-4">
                     <button 
+                        aria-label="Like post"
                         onClick={() => onLike(post._id)}
                         className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-pink-400 group"
                     >
@@ -112,6 +114,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                         <span className={hasLiked ? 'text-pink-500' : 'text-gray-400'}>{post.likes?.length || 0}</span>
                     </button>
                     <button 
+                        aria-label="Toggle comments"
                         onClick={() => setShowComments(!showComments)}
                         className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-blue-400 ${showComments ? 'text-blue-400' : 'text-gray-400'}`}
                     >
@@ -152,6 +155,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                     <form onSubmit={handleCommentSubmit} className="relative flex-none">
                         <input
                             type="text"
+                            aria-label="Add a comment"
                             value={commentText}
                             onChange={(e) => setCommentText(e.target.value)}
                             placeholder="Add a comment..."
@@ -159,6 +163,7 @@ const PostCard = ({ post, currentUserId, onLike, onComment, onEdit, onDelete, on
                         />
                         <button 
                             type="submit" 
+                            aria-label="Submit comment"
                             disabled={!commentText.trim()}
                             className="absolute right-1 top-1/2 -translate-y-1/2 p-1.5 text-blue-400 hover:text-blue-300 disabled:text-gray-600 disabled:hover:text-gray-600 transition-colors"
                         >
