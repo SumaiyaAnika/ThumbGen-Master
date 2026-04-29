@@ -17,10 +17,27 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB Connected'))
-    .catch((err) => console.log('DB Connection Error:', err));
+// Serverless-friendly MongoDB Connection
+const connectDB = async () => {
+    if (mongoose.connection.readyState >= 1) {
+        return; // Already connected
+    }
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+            socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+        });
+        console.log('MongoDB Connected (Serverless)');
+    } catch (error) {
+        console.error('DB Connection Error:', error);
+    }
+};
+
+// Middleware to ensure DB connection is active before hitting routes
+app.use(async (req, res, next) => {
+    await connectDB();
+    next();
+});
 
 // Mount Auth Routes (Keep this one in its own file since it has login AND register)
 app.use('/api/auth', require('./routes/auth.routes'));
