@@ -33,6 +33,13 @@ const PostCard = ({ post, index = 0, currentUserId, onLike, onComment, onEdit, o
         return name.substring(0, 2).toUpperCase();
     };
 
+    // Optimize Cloudinary Images for massive performance gains
+    const getOptimizedUrl = (url) => {
+        if (!url || !url.includes('cloudinary.com')) return url;
+        // Add format auto, quality auto, and limit width to 800px
+        return url.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
+    };
+
     return (
         <div className="bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 flex flex-col h-full">
             {/* Header: User Info & Menu */}
@@ -89,7 +96,7 @@ const PostCard = ({ post, index = 0, currentUserId, onLike, onComment, onEdit, o
             ) : (
                 <div className="relative group cursor-pointer aspect-video bg-black flex items-center justify-center overflow-hidden">
                     <img 
-                        src={post.imageUrl} 
+                        src={getOptimizedUrl(post.imageUrl)} 
                         alt={post.originalTitle || "Thumbnail"} 
                         loading={index < 4 ? "eager" : "lazy"}
                         fetchpriority={index < 2 ? "high" : "auto"}
