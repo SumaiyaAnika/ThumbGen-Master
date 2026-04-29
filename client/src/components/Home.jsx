@@ -95,17 +95,20 @@ const Home = () => {
 
                     {/* Feature 1: Prompt Input */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2 flex justify-between">
-                            <span>Your Prompt</span>
+                        <div className="flex justify-between items-center mb-2">
+                            <label htmlFor="prompt-input" className="block text-sm font-medium text-gray-200">
+                                Your Prompt
+                            </label>
                             {/* Feature 2: Auto-Refinement Button */}
                             <button
                                 onClick={handleRefine}
-                                className="text-xs text-pink-400 hover:text-pink-300 flex items-center gap-1"
+                                className="text-xs text-pink-300 hover:text-pink-200 flex items-center gap-1"
                             >
                                 <Wand2 size={14} /> Auto-Refine
                             </button>
-                        </label>
+                        </div>
                         <textarea
+                            id="prompt-input"
                             rows="4"
                             value={prompt}
                             onChange={(e) => setPrompt(e.target.value)}
@@ -117,10 +120,11 @@ const Home = () => {
                     <div className="grid grid-cols-2 gap-4">
                         {/* Feature 3: Style Preset Picker */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                            <label htmlFor="style-select" className="block text-sm font-medium text-gray-200 mb-2 flex items-center gap-2">
                                 <ImageIcon size={16} /> Style
                             </label>
                             <select
+                                id="style-select"
                                 value={style}
                                 onChange={(e) => setStyle(e.target.value)}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 appearance-none"
@@ -131,10 +135,11 @@ const Home = () => {
 
                         {/* Feature 4: Aspect Ratio Selector */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                            <label htmlFor="ratio-select" className="block text-sm font-medium text-gray-200 mb-2 flex items-center gap-2">
                                 <Layout size={16} /> Ratio
                             </label>
                             <select
+                                id="ratio-select"
                                 value={aspectRatio}
                                 onChange={(e) => setAspectRatio(e.target.value)}
                                 className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 appearance-none"
@@ -148,11 +153,12 @@ const Home = () => {
                     <div>
                         <button 
                             type="button"
+                            aria-expanded={showColorPicker}
                             onClick={() => setShowColorPicker(!showColorPicker)}
-                            className="w-full py-3 px-4 bg-gray-900 border border-gray-600 hover:border-pink-500 rounded-lg flex items-center justify-between text-sm text-gray-300 transition-colors"
+                            className="w-full py-3 px-4 bg-gray-900 border border-gray-600 hover:border-pink-500 rounded-lg flex items-center justify-between text-sm text-gray-200 transition-colors"
                         >
                             <div className="flex items-center gap-2">
-                                <Palette size={16} className={selectedColorScheme ? "text-pink-400" : "text-gray-400"} />
+                                <Palette size={16} className={selectedColorScheme ? "text-pink-400" : "text-gray-300"} />
                                 {selectedColorScheme ? "Color Palette Selected" : "Add Specific Color Palette"}
                             </div>
                             {showColorPicker ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
